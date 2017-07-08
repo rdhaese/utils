@@ -1,5 +1,8 @@
 package com.rdhaese.commons.utils.jpa.converters;
 
+import com.rdhaese.commons.utils.transformers.Transformer;
+import com.rdhaese.commons.utils.transformers.date_and_time.DurationHHMMStringTransformer;
+
 import javax.persistence.AttributeConverter;
 import java.time.Duration;
 
@@ -9,13 +12,20 @@ import java.time.Duration;
  * @author Robin D'Haese
  */
 public class DurationConverter implements AttributeConverter<Duration, String> {
+
+    private final Transformer<Duration, String> durqtionTransformer;
+
+    public DurationConverter() {
+        durqtionTransformer = new DurationHHMMStringTransformer();
+    }
+
     @Override
     public String convertToDatabaseColumn(Duration duration) {
-        return duration == null ? null : duration.toString();
+        return durqtionTransformer.transformFrom(duration);
     }
 
     @Override
     public Duration convertToEntityAttribute(String dbData) {
-        return dbData == null ? null : Duration.parse(dbData);
+        return durqtionTransformer.transformBack(dbData);
     }
 }
