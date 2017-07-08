@@ -13,5 +13,13 @@
     <groupId>com.rdhaese.commons</groupId>
     <artifactId>utils</artifactId>
     <version>1.0-SNAPSHOT</version>
-    
+
+    <dependencies>
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>7.0</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
 </project>
