@@ -10,7 +10,7 @@
 
     <groupId>com.rdhaese.commons</groupId>
     <artifactId>utils</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.0-SNAPSHOT</version>
 
     <dependencies>
         <!--Depending on this utility lib, gives you commons-lang3 too-->
@@ -28,7 +28,21 @@
         </dependency>
     </dependencies>
 
-  <scm>
-    <tag>utils-1.0.0</tag>
-  </scm>
+    <!--For no apparent reason, the property ${github.projectUrl} from the parent pom is replaced by
+    "https://github.com/rdhaese/mapstruct/mapstruct" in both url tags, which makes no sense! Even more, in the properties it is replaced correctly by
+    "https://github.com/rdhaese/mapstruct", weird...
+    Even if I override the property with a simple string link instead of constructing it from properties, this occurs...
+    {github.profileUrl} works as expected, strange... Am I going crazy?
+    TODO Check if reproducible in simple setup and submit issue. Already updated to latest stable maven version (3.5.0)
+    Hard setting them like this helps, to bad I have to do this.
+    EDIT:
+    Same happens with the connection and developerConnection... It looks like the ${project.artifactId} is replaced by "mapstruct/mapstruct" in these tags.
+    Found out I CAN use the properties, but I have to specify the following tags in every child project-->
+    <url>${github.projectUrl}</url>
+    <scm>
+        <url>${github.projectUrl}</url>
+        <connection>scm:git:git://github.com/${github.username}/${project.artifactId}.git</connection>
+        <developerConnection>scm:git:git@github.com:${github.username}/${project.artifactId}.git</developerConnection>
+    </scm>
+
 </project>
