@@ -10,7 +10,7 @@
 
     <groupId>com.rdhaese.commons</groupId>
     <artifactId>utils</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3-SNAPSHOT</version>
 
     <dependencies>
         <!--Depending on this utility lib, gives you commons-lang3 too-->
@@ -43,7 +43,7 @@
         <url>${github.projectUrl}</url>
         <connection>scm:git:git://github.com/${github.username}/${project.artifactId}.git</connection>
         <developerConnection>scm:git:git@github.com:${github.username}/${project.artifactId}.git</developerConnection>
-      <tag>utils-1.0.2</tag>
+      <tag>HEAD</tag>
   </scm>
 
 </project>
