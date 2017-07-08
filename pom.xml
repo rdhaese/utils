@@ -7,7 +7,7 @@
     <parent>
         <groupId>com.rdhaese</groupId>
         <artifactId>boot-parent</artifactId>
-        <version>1.0.5</version>
+        <version>1.0.6</version>
     </parent>
 
     <groupId>com.rdhaese.commons</groupId>
@@ -15,6 +15,13 @@
     <version>1.0-SNAPSHOT</version>
 
     <dependencies>
+        <!--Depending on this utility lib, gives you commons-lang3 too-->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+
+        <!--Provided dependencies, utilizing project it's responsibility to have these on the classpath-->
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>
