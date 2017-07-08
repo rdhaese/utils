@@ -9,7 +9,6 @@ import java.time.LocalDateTime;
  *
  * @author Robin D'Haese
  */
-//@Converter(autoApply = true)
 public class LocalDateTimeConverter implements AttributeConverter<LocalDateTime, Timestamp> {
     @Override
     public Timestamp convertToDatabaseColumn(LocalDateTime locDateTime) {

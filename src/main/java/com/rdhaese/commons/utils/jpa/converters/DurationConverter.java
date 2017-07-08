@@ -8,7 +8,6 @@ import java.time.Duration;
  *
  * @author Robin D'Haese
  */
-//@Converter(autoApply = true)
 public class DurationConverter implements AttributeConverter<Duration, String> {
     @Override
     public String convertToDatabaseColumn(Duration duration) {
