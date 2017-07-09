@@ -15,12 +15,12 @@ import java.time.Duration;
 public class DurationHHMMStringTransformer extends AbstractTransformer<Duration, String> {
 
     @Override
-    public String transformFromNotNullProtected(Duration duration) {
+    protected String transformFromNotNullProtected(Duration duration) {
         return DurationFormatUtils.formatDuration(duration.toMillis(), DateAndTimeConstants.HH_MM_TIME_FORMAT_JAVA);
     }
 
     @Override
-    public Duration transformBackNotNullProtected(String s) {
+    protected Duration transformBackNotNullProtected(String s) {
         return Duration.parse(DurationUtil.toDurationParsableStringAmount(s));
     }
 }

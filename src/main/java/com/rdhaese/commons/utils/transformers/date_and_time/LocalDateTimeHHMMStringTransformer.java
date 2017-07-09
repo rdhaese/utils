@@ -18,12 +18,12 @@ public class LocalDateTimeHHMMStringTransformer extends AbstractTransformer<Loca
     DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern(DateAndTimeConstants.HH_MM_TIME_FORMAT_JAVA);
 
     @Override
-    public String transformFromNotNullProtected(LocalDateTime localDateTime) {
+    protected String transformFromNotNullProtected(LocalDateTime localDateTime) {
         return timeFormatter.format(localDateTime);
     }
 
     @Override
-    public LocalDateTime transformBackNotNullProtected(String s) {
+    protected LocalDateTime transformBackNotNullProtected(String s) {
         return LocalDateTime.of(LocalDate.now(), LocalTime.from(timeFormatter.parse(s)));
     }
 }

@@ -16,12 +16,12 @@ public class LocalDateTimeYYYYMMDDTHHMMStringTransformer extends AbstractTransfo
     private static final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(DateAndTimeConstants.YYYY_MM_DD_T_HH_MM_DATE_TIME_FORMAT_JAVA);
 
     @Override
-    public String transformFromNotNullProtected(LocalDateTime localDateTime) {
+    protected String transformFromNotNullProtected(LocalDateTime localDateTime) {
         return dateTimeFormatter.format(localDateTime);
     }
 
     @Override
-    public LocalDateTime transformBackNotNullProtected(String s) {
+    protected LocalDateTime transformBackNotNullProtected(String s) {
         return LocalDateTime.from(dateTimeFormatter.parse(s));
     }
 }
