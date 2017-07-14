@@ -26,6 +26,12 @@
             <version>7.0</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <!--We need scope provided, for the AssertUtils for example-->
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
     <!--For no apparent reason, the property ${github.projectUrl} from the parent pom is replaced by
