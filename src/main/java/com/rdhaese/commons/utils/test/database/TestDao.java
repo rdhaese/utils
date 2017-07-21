@@ -8,18 +8,30 @@ import javax.transaction.Transactional;
  * Created on 19/07/2017.
  * <p>
  * Simple DAO that can be used for tests on the entity layer where no DAO is available.
- * Should be used together with CDI or Spring.
+ * Can be used together with CDI or Spring, where the entity manager gets injected.
  *
  * @author Robin D'Haese
  */
 public class TestDao {
 
     /**
-     * The entity manager used in the DAO. Injected by CDI or Spring.
+     * The entity manager used in the DAO. Can be Injected by CDI or Spring.
      */
     @PersistenceContext
-    private EntityManager em;
+    private EntityManager entityManager;
 
+    /**
+     * Constructor to be used when you want the entity manager to be injected by CDI or Spring.
+     */
+    public TestDao(){}
+
+    /**
+     * Constructor to be used when you don't want the entity manager injected.
+     * @param entityManager the entity manager to use.
+     */
+    public TestDao(final EntityManager entityManager){
+        this.entityManager = entityManager;
+    }
     /**
      * Method to persist an object. The object also gets flushed.
      * The utilizing test method does not has to be @Transacional, but this one is.
@@ -28,8 +40,8 @@ public class TestDao {
      */
     @Transactional
     public void persist(Object o) {
-        em.persist(o);
-        em.flush();
+        entityManager.persist(o);
+        entityManager.flush();
     }
 
     /**
@@ -44,7 +56,7 @@ public class TestDao {
      */
     @Transactional
     public <T> T find(Class clazz, Object primaryKey) {
-        Object o = em.find(clazz, primaryKey);
+        Object o = entityManager.find(clazz, primaryKey);
         if (o == null) {
             return null;
         }
