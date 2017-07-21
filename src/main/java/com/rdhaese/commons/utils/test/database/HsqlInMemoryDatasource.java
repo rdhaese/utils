@@ -4,7 +4,7 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 /**
  * Created on 15/07/2017.
- * 
+ *
  * <p>
  * Configured HSQL in memory datasource, declaring as bean is enough.
  * <p>

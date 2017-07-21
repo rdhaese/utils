@@ -24,10 +24,10 @@ public final class AssertUtils {
      * Asserts if the equals method is implemented correctly.
      * Objects must be equal in both ways,
      * .equals(null) and .equals(otherType) must resolve to Boolean.FALSE.
-     *
+     * <p>
      * Mainly for use in the {@link #assertEqualsAndHashCode(Object, Object)} method,
      * but can be used separately.
-     *
+     * <p>
      * Using the {@link #assertEqualsAndHashCode(Object, Object)} method is advised,
      * as it tests the equals and hashCode contract.
      *
@@ -50,7 +50,7 @@ public final class AssertUtils {
      * Asserts if the hashCode of o1 and o2 are equal.
      * Mainly for use in the {@link #assertEqualsAndHashCode(Object, Object)} method,
      * but can be used separately.
-     *
+     * <p>
      * Using the {@link #assertEqualsAndHashCode(Object, Object)} method is advised,
      * as it tests the equals and hashCode contract.
      *
@@ -66,7 +66,7 @@ public final class AssertUtils {
     /**
      * Asserts if the equals method is implemented correctly using {@link #assertEqualsMethod(Object, Object)}
      * and the hashCodes are equal using {@link #assertHashCodeMethod(Object, Object)}.
-     *
+     * <p>
      * By using this method you also test the equals and hashCode contract.
      *
      * @param o1 First object to use in the comparison
@@ -77,6 +77,20 @@ public final class AssertUtils {
     public static void assertEqualsAndHashCode(Object o1, Object o2) {
         assertEqualsMethod(o1, o2);
         assertHashCodeMethod(o1, o2);
+    }
+
+    /**
+     * Asserts that the two object in the parameters are not equal in both ways and that their hashCode isn't equal either.
+     * Thus also testing the equals and hasCode contract.
+     *
+     * @param o1 First object to use in the comparison
+     * @param o2 Second object to use in the comparison
+     * @see org.junit.Assert
+     */
+    public static void assertEqualsAndHashCodeNotEqual(Object o1, Object o2) {
+        Assert.assertNotEquals(o1, o2);
+        Assert.assertNotEquals(o2, o1);
+        Assert.assertNotEquals(o1.hashCode(), o2.hashCode());
     }
 
     /**
